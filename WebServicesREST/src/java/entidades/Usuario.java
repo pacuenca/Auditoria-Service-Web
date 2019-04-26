@@ -16,29 +16,29 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Erika
+ * @author estef
  */
 @Entity
-@Table(name = "usuario", catalog = "mybd", schema = "", uniqueConstraints = {
+@Table(name = "usuario", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cedula", "usuario"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario"),
-    @NamedQuery(name = "Usuario.findByCedula", query = "SELECT u FROM Usuario u WHERE u.cedula = :cedula"),
-    @NamedQuery(name = "Usuario.findByNombres", query = "SELECT u FROM Usuario u WHERE u.nombres = :nombres"),
-    @NamedQuery(name = "Usuario.findByApellidos", query = "SELECT u FROM Usuario u WHERE u.apellidos = :apellidos"),
-    @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
-    @NamedQuery(name = "Usuario.findByContrasenia", query = "SELECT u FROM Usuario u WHERE u.contrasenia = :contrasenia"),
-    @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
-    @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion")})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Usuario.findByCedula", query = "SELECT u FROM Usuario u WHERE u.cedula = :cedula")
+    , @NamedQuery(name = "Usuario.findByNombres", query = "SELECT u FROM Usuario u WHERE u.nombres = :nombres")
+    , @NamedQuery(name = "Usuario.findByApellidos", query = "SELECT u FROM Usuario u WHERE u.apellidos = :apellidos")
+    , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
+    , @NamedQuery(name = "Usuario.findByContrasenia", query = "SELECT u FROM Usuario u WHERE u.contrasenia = :contrasenia")
+    , @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono")
+    , @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion")
+    , @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol")})
 public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,40 +46,29 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario", nullable = false)
     private Integer idUsuario;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "cedula", nullable = false, length = 10)
     private String cedula;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
     @Column(name = "nombres", nullable = false, length = 50)
     private String nombres;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
     @Column(name = "apellidos", nullable = false, length = 50)
     private String apellidos;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
     @Column(name = "usuario", nullable = false, length = 20)
     private String usuario;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
     @Column(name = "contrasenia", nullable = false, length = 20)
     private String contrasenia;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "telefono", nullable = false, length = 10)
     private String telefono;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
     @Column(name = "direccion", nullable = false, length = 100)
     private String direccion;
+    @Basic(optional = false)
+    @Column(name = "rol", nullable = false, length = 15)
+    private String rol;
 
     public Usuario() {
     }
@@ -88,7 +77,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String cedula, String nombres, String apellidos, String usuario, String contrasenia, String telefono, String direccion) {
+    public Usuario(Integer idUsuario, String cedula, String nombres, String apellidos, String usuario, String contrasenia, String telefono, String direccion, String rol) {
         this.idUsuario = idUsuario;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -97,6 +86,7 @@ public class Usuario implements Serializable {
         this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.rol = rol;
     }
 
     public Integer getIdUsuario() {
@@ -161,6 +151,14 @@ public class Usuario implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @Override
