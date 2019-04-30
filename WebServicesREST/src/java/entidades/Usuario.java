@@ -89,6 +89,16 @@ public class Usuario implements Serializable {
         this.rol = rol;
     }
 
+public Usuario(Integer idUsuario, String cedula, String nombres, String apellidos, String telefono, String direccion, String rol) {
+        this.idUsuario = idUsuario;
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.rol = rol;
+    }
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
