@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2019 a las 20:01:37
--- Versión del servidor: 10.1.29-MariaDB
--- Versión de PHP: 7.2.0
+-- Tiempo de generación: 30-04-2019 a las 02:30:57
+-- Versión del servidor: 10.1.32-MariaDB
+-- Versión de PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `cedula`, `nombres`, `apellidos`, `usuario`, `contrasenia`, `telefono`, `direccion`, `rol`) VALUES
-(1, '1900751015', 'Erika Tatiana', 'Vasquez Tapia', 'evasquez', 'admin', '0979596397', 'Jipiro', 'Administrador');
+(1, '1900751015', 'Erika Tatiana', 'Vasquez Tapia', 'evasquez', 'admin', '0979596397', 'Jipiro', 'Administrador'),
+(2, '1104715004', 'Andrea Estefania', 'Mena Chamba', 'amena', 'admin', '0991745655', 'Loja', 'Administrador'),
+(4, '1105505050', 'Karen Elizabeth', 'Torres Zhapa', 'ktorres', 'admin', '0991745654', 'Reinaldo Espinoza', 'Técnico'),
+(6, '1705042030', 'Paúl Andrés', 'Cuenca Macas', 'pcuenca', 'admin', '0991745653', 'El Paraíso', 'Técnico');
 
 --
 -- Índices para tablas volcadas
@@ -66,7 +69,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
