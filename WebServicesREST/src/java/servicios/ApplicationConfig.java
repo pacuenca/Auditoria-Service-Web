@@ -30,7 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ServicioRest.Consulta1.class);
-        resources.add(ServicioRest.Consulta2.class);
+        resources.add(servicioRest.webServices.class);
         resources.add(servicios.GenericResource.class);
     }
     
